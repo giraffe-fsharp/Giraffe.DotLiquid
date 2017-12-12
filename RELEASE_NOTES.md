@@ -1,7 +1,9 @@
 Release Notes
 =============
 
-## Develop branch
+## 0.1.0-beta-300
+
+Upgraded dependencies to `Giraffe 0.1.0-beta-5**`.
 
 #### Breaking changes
 

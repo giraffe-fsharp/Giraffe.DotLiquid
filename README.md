@@ -18,6 +18,7 @@ DotLiquid templating engine http handlers for the Giraffe web framework.
     - [dotLiquidTemplate](#dotliquidtemplate)
     - [dotLiquidHtmlTemplate](#dotliquidhtmltemplate)
 - [Samples](#samples)
+- [Nightly builds and NuGet feed](#nightly-builds-and-nuget-feed)
 - [More information](#more-information)
 - [License](#license)
 
@@ -106,6 +107,18 @@ let app =
 ## Samples
 
 Please find a fully functioning sample application under [./samples/GiraffeDotLiquidSample/](https://github.com/giraffe-fsharp/Giraffe.DotLiquid/tree/master/samples/GiraffeDotLiquidSample).
+
+## Nightly builds and NuGet feed
+
+All official Giraffe packages are published to the official and public NuGet feed.
+
+Unofficial builds (such as pre-release builds from the `develop` branch and pull requests) produce unofficial pre-release NuGet packages which can be pulled from the project's public NuGet feed on AppVeyor:
+
+```
+https://ci.appveyor.com/nuget/giraffe-dotliquid
+```
+
+If you add this source to your NuGet CLI or project settings then you can pull unofficial NuGet packages for quick feature testing or urgent hot fixes.
 
 ## More information
 

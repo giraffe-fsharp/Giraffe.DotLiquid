@@ -38,11 +38,51 @@ function Write-DotnetVersion
     Write-Host ".NET Core runtime version: $dotnetVersion" -ForegroundColor Cyan
 }
 
-function dotnet-restore ($project, $argv) { Invoke-Cmd "dotnet restore $project $argv" }
-function dotnet-build   ($project, $argv) { Invoke-Cmd "dotnet build $project $argv" }
+function Get-TargetFrameworks ($projFile)
+{
+    [xml]$proj = Get-Content $projFile
+
+    if ($proj.Project.PropertyGroup.TargetFrameworks -ne $null) {
+        ($proj.Project.PropertyGroup.TargetFrameworks).Split(";")
+    }
+    else {
+        @($proj.Project.PropertyGroup.TargetFramework)
+    }
+}
+
+function Get-NetCoreTargetFramework ($projFile)
+{
+    Get-TargetFrameworks $projFile | where { $_ -like "netstandard*" -or $_ -like "netcoreapp*" }
+}
+
 function dotnet-run     ($project, $argv) { Invoke-Cmd "dotnet run --project $project $argv" }
-function dotnet-test    ($project, $argv) { Invoke-Cmd "dotnet test $project $argv" }
 function dotnet-pack    ($project, $argv) { Invoke-Cmd "dotnet pack $project $argv" }
+
+function dotnet-build ($project, $argv)
+{
+    if ($OnlyNetStandard.IsPresent) {
+        $fw = Get-NetCoreTargetFramework $project
+        $argv = "-f $fw " + $argv
+    }
+
+    Invoke-Cmd "dotnet build $project $argv"
+}
+
+function dotnet-test ($project, $argv)
+{
+    # Currently dotnet test does not work for net461 on Linux/Mac
+    # See: https://github.com/Microsoft/vstest/issues/1318
+    #
+    # Previously dotnet-xunit was a great alternative, however after
+    # issues with the maintenance dotnet xunit has been discontinued
+    # after xunit 2.4: https://xunit.github.io/releases/2.4
+    if(!(Test-IsWindows) -or $OnlyNetStandard.IsPresent) {
+        $fw = Get-NetCoreTargetFramework $project;
+        $argv = "-f $fw " + $argv
+    }
+
+    Invoke-Cmd "dotnet test $project $argv"
+}
 
 function Test-Version ($project)
 {
@@ -88,26 +128,6 @@ function Remove-OldBuildArtifacts
         Remove-Item $_ -Recurse -Force }
 }
 
-function Get-TargetFrameworks ($projFile)
-{
-    [xml]$proj = Get-Content $projFile
-    ($proj.Project.PropertyGroup.TargetFrameworks).Split(";")
-}
-
-function Get-NetCoreTargetFramework ($projFile)
-{
-    Get-TargetFrameworks $projFile  | where { $_ -like "netstandard*" -or $_ -like "netcoreapp*" }
-}
-
-function Get-FrameworkArg ($projFile)
-{
-    if ($OnlyNetStandard.IsPresent) {
-        $fw = Get-NetCoreTargetFramework $projFile
-        "-f $fw"
-    }
-    else { "" }
-}
-
 # ----------------------------------------------
 # Main
 # ----------------------------------------------
@@ -130,34 +150,21 @@ Remove-OldBuildArtifacts
 $configuration = if ($Release.IsPresent) { "Release" } else { "Debug" }
 
 Write-Host "Building Giraffe.DotLiquid..." -ForegroundColor Magenta
-$framework = Get-FrameworkArg $giraffeDotLiquid
-dotnet-restore $giraffeDotLiquid
-dotnet-build   $giraffeDotLiquid "-c $configuration $framework"
+dotnet-build   $giraffeDotLiquid "-c $configuration"
 
 if (!$ExcludeTests.IsPresent -and !$Run.IsPresent)
 {
     Write-Host "Building and running tests..." -ForegroundColor Magenta
-    $framework = Get-FrameworkArg $giraffeDotLiquidTests
-    # Currently dotnet test does not work for net461 on Linux/Mac
-    # See: https://github.com/Microsoft/vstest/issues/1318
-    if (!(Test-IsWindows)) {
-        Write-Warning "Running tests only for .NET Core build, because dotnet test does not support net4x tests on Linux/Mac at the moment (see: https://github.com/Microsoft/vstest/issues/1318)."
-        $fw = Get-NetCoreTargetFramework $giraffeDotLiquidTests
-        $framework = "-f $fw"
-    }
-    dotnet-restore $giraffeDotLiquidTests
-    dotnet-build   $giraffeDotLiquidTests $framework
-    dotnet-test    $giraffeDotLiquidTests $framework
+
+    dotnet-build   $giraffeDotLiquidTests
+    dotnet-test    $giraffeDotLiquidTests
 }
 
 if (!$ExcludeSamples.IsPresent -and !$Run.IsPresent)
 {
     Write-Host "Building and testing samples..." -ForegroundColor Magenta
-
-    dotnet-restore $sampleApp
     dotnet-build   $sampleApp
 
-    dotnet-restore $sampleAppTests
     dotnet-build   $sampleAppTests
     dotnet-test    $sampleAppTests
 }
@@ -165,7 +172,6 @@ if (!$ExcludeSamples.IsPresent -and !$Run.IsPresent)
 if ($Run.IsPresent)
 {
     Write-Host "Launching sample application..." -ForegroundColor Magenta
-    dotnet-restore $sampleApp
     dotnet-build   $sampleApp
     dotnet-run     $sampleApp
 }

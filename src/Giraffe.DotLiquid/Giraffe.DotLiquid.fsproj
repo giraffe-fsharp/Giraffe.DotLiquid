@@ -1,16 +1,25 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <AssemblyName>Giraffe.DotLiquid</AssemblyName>
-    <Version>1.1.0</Version>
+    <Version>1.2.0</Version>
+    <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
+
+    <!-- General info -->
     <Description>DotLiquid templating engine http handlers for the Giraffe web framework.</Description>
     <Copyright>Copyright 2018 Dustin Moris Gorski</Copyright>
-    <NeutralLanguage>en-GB</NeutralLanguage>
     <Authors>Dustin Moris Gorski and contributors</Authors>
-    <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
+    <NeutralLanguage>en-GB</NeutralLanguage>
+
+    <!-- Build config -->
     <DebugType>portable</DebugType>
-    <WarningsAsErrors>1</WarningsAsErrors>
     <Optimize>True</Optimize>
     <OutputType>Library</OutputType>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <IsWindows Condition="'$(OS)' == 'Windows_NT'">true</IsWindows>
+
+    <!-- NuGet config -->
     <PackageId>Giraffe.DotLiquid</PackageId>
     <PackageTags>Giraffe;DotLiquid;ASP.NET Core;Lambda;FSharp;Functional;Http;Web;Framework;Micro;Service</PackageTags>
     <PackageReleaseNotes>https://raw.githubusercontent.com/giraffe-fsharp/Giraffe.DotLiquid/master/RELEASE_NOTES.md</PackageReleaseNotes>
@@ -21,17 +30,12 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/giraffe-fsharp/Giraffe.DotLiquid</RepositoryUrl>
     <IncludeSymbols>true</IncludeSymbols>
-    <NetStandardImplicitPackageVersion>2.0</NetStandardImplicitPackageVersion>
-    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
-    <IsWindows Condition="'$(OS)' == 'Windows_NT'">true</IsWindows>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.0.*" />
-    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.0.*" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.0.*" />
-    <PackageReference Include="Microsoft.Extensions.Primitives" Version="2.0.*" />
-    <PackageReference Include="Giraffe" Version="1.1.*" />
+    <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.1.*" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.1.*" />
+    <PackageReference Include="Giraffe" Version="2.0.*" />
     <PackageReference Include="DotLiquid" Version="2.0.*" />
   </ItemGroup>
 

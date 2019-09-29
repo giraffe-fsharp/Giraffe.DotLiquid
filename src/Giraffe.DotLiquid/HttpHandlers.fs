@@ -6,7 +6,8 @@ open Microsoft.AspNetCore.Http
 open Microsoft.AspNetCore.Hosting
 open Microsoft.Extensions.DependencyInjection
 open DotLiquid
-open Common
+open Giraffe.Common
+open FSharp.Control.Tasks.V2
 
 /// Renders a model and a template with the DotLiquid template engine and sets the HTTP response
 /// with the compiled output as well as the Content-Type HTTP header to the given value.
@@ -21,7 +22,7 @@ let dotLiquid (contentType : string) (template : string) (model : obj) : HttpHan
     >=> setBody bytes
 
 /// Reads a dotLiquid template file from disk and compiles it with the given model and sets
-/// the compiled output as well as the given contentType as the HTTP reponse.
+/// the compiled output as well as the given contentType as the HTTP response.
 let dotLiquidTemplate (contentType : string) (templatePath : string) (model : obj) : HttpHandler =
     fun (next : HttpFunc) (ctx : HttpContext) ->
         task {
@@ -32,6 +33,6 @@ let dotLiquidTemplate (contentType : string) (templatePath : string) (model : ob
         }
 
 /// Reads a dotLiquid template file from disk and compiles it with the given model and sets
-/// the compiled output as the HTTP reponse with a Content-Type of text/html.
+/// the compiled output as the HTTP response with a Content-Type of text/html.
 let dotLiquidHtmlTemplate (templatePath : string) (model : obj) : HttpHandler =
     dotLiquidTemplate "text/html" templatePath model

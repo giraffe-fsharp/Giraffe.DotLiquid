@@ -4,11 +4,11 @@ open System.IO
 open System.Text
 open System.Threading.Tasks
 open Microsoft.AspNetCore.Http
+open FSharp.Control.Tasks.V2
+open Giraffe
+open Giraffe.TokenRouter
 open Xunit
 open NSubstitute
-open Giraffe
-open DotLiquid
-open TokenRouter
 
 // ---------------------------------
 // Helper functions

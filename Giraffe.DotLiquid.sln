@@ -11,7 +11,7 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Giraffe.DotLiquid", "src\Gi
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Giraffe.DotLiquid.Tests", "tests\Giraffe.DotLiquid.Tests\Giraffe.DotLiquid.Tests.fsproj", "{162F3108-0AD8-407D-BEEB-94EBF2707EC4}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".build", ".build", "{B362010D-E317-47C6-BA46-31016723777B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_build", "_build", "{B362010D-E317-47C6-BA46-31016723777B}"
 ProjectSection(SolutionItems) = preProject
 	appveyor.yml = appveyor.yml
 	build.ps1 = build.ps1
@@ -20,20 +20,20 @@ ProjectSection(SolutionItems) = preProject
 	NuGet.config = NuGet.config
 EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".psscripts", ".psscripts", "{7F02897F-CEA5-4D3C-B6D9-651B94370478}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_psscripts", "_psscripts", "{7F02897F-CEA5-4D3C-B6D9-651B94370478}"
 ProjectSection(SolutionItems) = preProject
 	.psscripts\build-functions.ps1 = .psscripts\build-functions.ps1
 	.psscripts\install-dotnet.ps1 = .psscripts\install-dotnet.ps1
 	.psscripts\nuget-updates.ps1 = .psscripts\nuget-updates.ps1
 EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".git", ".git", "{D53D0BA5-D997-45FB-88C8-B6CC16E35E64}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_git", "_git", "{D53D0BA5-D997-45FB-88C8-B6CC16E35E64}"
 ProjectSection(SolutionItems) = preProject
 	.gitattributes = .gitattributes
 	.gitignore = .gitignore
 EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".docs", ".docs", "{04A2F6C3-8483-4903-95F6-95658837AED4}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_docs", "_docs", "{04A2F6C3-8483-4903-95F6-95658837AED4}"
 ProjectSection(SolutionItems) = preProject
 	LICENSE = LICENSE
 	README.md = README.md

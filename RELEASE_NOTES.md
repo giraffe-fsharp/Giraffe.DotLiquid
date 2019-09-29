@@ -1,6 +1,10 @@
 Release Notes
 =============
 
+## 1.3.0
+
+Upgraded to Giraffe `4.0.0` and the latest ASP.NET Core dependencies, which are all .NET Core 3.0 compatible.
+
 ## 1.2.0
 
 Upgraded to Giraffe `2.0.0` and the latest ASP.NET Core `2.1.*` NuGet packages.

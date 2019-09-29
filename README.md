@@ -6,10 +6,11 @@ DotLiquid templating engine http handlers for the Giraffe web framework.
 
 [![NuGet Info](https://buildstats.info/nuget/Giraffe.DotLiquid?includePreReleases=true)](https://www.nuget.org/packages/Giraffe.DotLiquid/)
 
-| Windows | Linux |
-| :------ | :---- |
-| [![Windows Build status](https://ci.appveyor.com/api/projects/status/914030ec0lrc0vti/branch/develop?svg=true)](https://ci.appveyor.com/project/dustinmoris/giraffe-dotliquid/branch/develop) | [![Linux Build status](https://travis-ci.org/giraffe-fsharp/Giraffe.DotLiquid.svg?branch=develop)](https://travis-ci.org/giraffe-fsharp/Giraffe.DotLiquid/builds?branch=develop) |
-| [![Windows Build history](https://buildstats.info/appveyor/chart/dustinmoris/giraffe-dotliquid?branch=develop&includeBuildsFromPullRequest=false)](https://ci.appveyor.com/project/dustinmoris/giraffe-dotliquid/history?branch=develop) | [![Linux Build history](https://buildstats.info/travisci/chart/giraffe-fsharp/Giraffe.DotLiquid?branch=develop&includeBuildsFromPullRequest=false)](https://travis-ci.org/giraffe-fsharp/Giraffe.DotLiquid/builds?branch=develop) |
+### Windows and Linux Builds
+
+[![Build status](https://ci.appveyor.com/api/projects/status/914030ec0lrc0vti/branch/develop?svg=true)](https://ci.appveyor.com/project/dustinmoris/giraffe-dotliquid/branch/develop)
+
+[![Build history](https://buildstats.info/appveyor/chart/dustinmoris/giraffe-dotliquid?branch=develop&includeBuildsFromPullRequest=false)](https://ci.appveyor.com/project/dustinmoris/giraffe-dotliquid/history?branch=develop)
 
 ## Table of contents
 

@@ -1,6 +1,10 @@
 Release Notes
 =============
 
+## 2.0.0
+
+- Removed support for all .NET framework monikers except `netcoreapp3.1` (in preparation for .NET 5)
+
 ## 1.3.0
 
 Upgraded to Giraffe `4.0.0` and the latest ASP.NET Core dependencies, which are all .NET Core 3.0 compatible.

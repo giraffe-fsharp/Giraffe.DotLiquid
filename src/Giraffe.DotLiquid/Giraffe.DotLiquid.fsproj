@@ -1,16 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <AssemblyName>Giraffe.DotLiquid</AssemblyName>
-    <Version>1.3.0</Version>
-
     <!-- General info -->
+    <AssemblyName>Giraffe.DotLiquid</AssemblyName>
     <Description>DotLiquid templating engine http handlers for the Giraffe web framework.</Description>
-    <Copyright>Copyright 2018 Dustin Moris Gorski</Copyright>
+    <Copyright>Copyright 2020 Dustin Moris Gorski</Copyright>
     <Authors>Dustin Moris Gorski and contributors</Authors>
     <NeutralLanguage>en-GB</NeutralLanguage>
 
     <!-- Build config -->
-    <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <DebugType>portable</DebugType>
     <OutputType>Library</OutputType>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
@@ -21,7 +19,7 @@
     <PackageId>Giraffe.DotLiquid</PackageId>
     <PackageTags>Giraffe;DotLiquid;ASP.NET Core;Lambda;FSharp;Functional;Http;Web;Framework;Micro;Service</PackageTags>
     <PackageReleaseNotes>https://raw.githubusercontent.com/giraffe-fsharp/Giraffe.DotLiquid/master/RELEASE_NOTES.md</PackageReleaseNotes>
-    <PackageIconUrl>https://raw.githubusercontent.com/giraffe-fsharp/Giraffe/master/giraffe-64x64.png</PackageIconUrl>
+    <PackageIcon>giraffe-64x64.png</PackageIcon>
     <PackageProjectUrl>https://github.com/giraffe-fsharp/Giraffe.DotLiquid</PackageProjectUrl>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
@@ -31,19 +29,22 @@
     <!-- SourceLink settings -->
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
-
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
     <NoWarn>FS2003;FS0044</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.2.*" />
-    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.*" />
-    <PackageReference Include="Giraffe" Version="4.0.*" />
+    <None Include="../../giraffe-64x64.png">
+      <Pack>true</Pack>
+      <PackagePath>$(PackageIconUrl)</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Giraffe" Version="4.1.*" />
     <PackageReference Include="TaskBuilder.fs" Version="2.1.*" />
-    <PackageReference Include="DotLiquid" Version="2.0.*" />
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta2-19367-01" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0-preview.2" PrivateAssets="All" />
+    <PackageReference Include="DotLiquid" Version="2.0.*"/>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.*" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup>

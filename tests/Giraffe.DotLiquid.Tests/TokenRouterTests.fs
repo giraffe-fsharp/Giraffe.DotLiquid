@@ -6,7 +6,6 @@ open System.Threading.Tasks
 open Microsoft.AspNetCore.Http
 open FSharp.Control.Tasks.V2
 open Giraffe
-open Giraffe.TokenRouter
 open Xunit
 open NSubstitute
 
@@ -60,13 +59,14 @@ let ``GET "/dotLiquid" returns rendered html view`` () =
     let obj = { Foo = "John"; Bar = "Doe"; Age = 30 }
 
     let app =
-        router notFound [
-            GET [
-                route "/"          => text "Hello World"
-                route "/dotLiquid" => dotLiquid "text/html" dotLiquidTemplate obj ]
-            POST [
-                route "/post/1"    => text "1" ]
-            ]
+        choose [
+            GET >=> choose [
+                route "/"          >=> text "Hello World"
+                route "/dotLiquid" >=> dotLiquid "text/html" dotLiquidTemplate obj ]
+            POST>=> choose [
+                route "/post/1"    >=> text "1" ]
+            notFound
+        ]
 
     ctx.Request.Method.ReturnsForAnyArgs "GET" |> ignore
     ctx.Request.Path.ReturnsForAnyArgs (PathString("/dotLiquid")) |> ignore

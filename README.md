@@ -1,6 +1,6 @@
-# Giraffe.DotLiquid
-
 ![Giraffe](https://raw.githubusercontent.com/giraffe-fsharp/Giraffe/master/giraffe.png)
+
+# Giraffe.DotLiquid
 
 DotLiquid templating engine http handlers for the Giraffe web framework.
 

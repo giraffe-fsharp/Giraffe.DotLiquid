@@ -1,6 +1,12 @@
 Release Notes
 =============
 
+## 3.0.0-rc-1
+
+- Updated to .NET 5
+- Updated to latest Giraffe 5.0.0-rc-6
+- Swapped TaskBuilder.fs for Ply
+
 ## 2.0.0
 
 - Removed support for all .NET framework monikers except `netcoreapp3.1` (in preparation for .NET 5)

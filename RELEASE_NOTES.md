@@ -1,7 +1,7 @@
 Release Notes
 =============
 
-## 4.0.0
+## 4.0.0-rc-1
 
 - Updated to .NET 7
 - Updated to latest Giraffe 6.2.0

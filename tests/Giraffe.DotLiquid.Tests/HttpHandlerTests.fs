@@ -4,7 +4,6 @@ open System.IO
 open System.Text
 open System.Threading.Tasks
 open Microsoft.AspNetCore.Http
-open FSharp.Control.Tasks
 open Giraffe
 open Xunit
 open NSubstitute

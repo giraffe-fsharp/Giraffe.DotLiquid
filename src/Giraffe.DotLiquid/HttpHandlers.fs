@@ -7,7 +7,6 @@ open Microsoft.AspNetCore.Hosting
 open Microsoft.Extensions.DependencyInjection
 open DotLiquid
 open Giraffe
-open FSharp.Control.Tasks
 
 /// Renders a model and a template with the DotLiquid template engine and sets the HTTP response
 /// with the compiled output as well as the Content-Type HTTP header to the given value.

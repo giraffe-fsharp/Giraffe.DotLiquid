@@ -23,11 +23,22 @@ let personTemplate = "<html><head><title>DotLiquid</title></head><body><p>First 
 
 let fooBar = { FirstName = "Foo"; LastName = "Bar" }
 
+let renderIndex =
+    """
+    <p>non razor index</p>
+    <ul>
+        <li><a href=/person>person</a></li></li>
+        <li><a href=/person2>person2</a></li>
+        <li><a href=/person3>person3</a></li>
+    </ul>
+    """
+    |> htmlString
+
 let webApp =
     choose [
         GET >=>
             choose [
-                route "/"        >=> text "index"
+                route "/"        >=> renderIndex
                 route "/person"  >=> dotLiquid "text/html" personTemplate fooBar
                 route "/person2" >=> dotLiquidTemplate "text/html" "Templates/Person.liquid" fooBar
                 route "/person3" >=> dotLiquidHtmlTemplate "Templates/Person.liquid" fooBar

@@ -1,6 +1,12 @@
 Release Notes
 =============
 
+## 4.0.0-rc-1
+
+- Updated to .NET 7
+- Updated to latest Giraffe 6.2.0
+- Swapped Ply for native F# task
+
 ## 3.0.0-rc-1
 
 - Updated to .NET 5

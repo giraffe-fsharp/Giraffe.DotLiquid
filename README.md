@@ -8,9 +8,9 @@ DotLiquid templating engine http handlers for the Giraffe web framework.
 
 ### Linux, macOS and Windows Build Status
 
-![.NET Core](https://github.com/giraffe-fsharp/Giraffe.DotLiquid/workflows/.NET%20Core/badge.svg?branch=develop)
+![.NET Core](https://github.com/giraffe-fsharp/Giraffe.DotLiquid/workflows/.NET%20Core/badge.svg?branch=master)
 
-[![Build history](https://buildstats.info/github/chart/giraffe-fsharp/Giraffe.DotLiquid?branch=develop&includeBuildsFromPullRequest=false)](https://github.com/giraffe-fsharp/Giraffe.DotLiquid/actions?query=branch%3Adevelop++)
+[![Build history](https://buildstats.info/github/chart/giraffe-fsharp/Giraffe.DotLiquid?branch=master&includeBuildsFromPullRequest=false)](https://github.com/giraffe-fsharp/Giraffe.DotLiquid/actions?query=branch%3Amaster++)
 
 ## Table of contents
 
@@ -134,11 +134,20 @@ sample application's target frameworks are unchanged.
 
 All official release packages are published to the official and public NuGet feed.
 
-Nightly builds (builds from the `develop` branch) produce unofficial pre-release packages which can be pulled from the [project's NuGet feed on GitHub](https://github.com/orgs/giraffe-fsharp/packages).
+`master` is the integration branch; open pull requests against `master`.
+GitHub Actions builds and tests pull requests and pushes to `master` on Linux,
+Windows and macOS. Successful pushes to `master` also publish unofficial
+pre-release packages to the [project's NuGet feed on GitHub](https://github.com/orgs/giraffe-fsharp/packages).
+Pull requests never publish packages. Official nuget.org publication remains
+triggered only by a published GitHub release.
 
-These packages are being tagged with the Workflow's run number as the package version.
+Unofficial packages use the version `0.0.0-ci.<run-id>`.
 
 All other builds, such as builds triggered by pull requests produce a NuGet package which can be downloaded as an artifact from the individual GitHub action.
+
+After merging the master-only migration, maintainers can remove the obsolete
+`develop` branch and its branch protection rule. Check that it still has no
+commits missing from `master` before deleting it.
 
 ## More information
 

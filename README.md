@@ -128,6 +128,10 @@ After a successful trusted-publishing release, remove the obsolete GitHub
 
 ### Package feeds
 
+The test projects run on .NET 8 so they do not depend on the .NET 5 runtime's
+obsolete OpenSSL libraries on current CI runners. The published library and
+sample application's target frameworks are unchanged.
+
 All official release packages are published to the official and public NuGet feed.
 
 Nightly builds (builds from the `develop` branch) produce unofficial pre-release packages which can be pulled from the [project's NuGet feed on GitHub](https://github.com/orgs/giraffe-fsharp/packages).

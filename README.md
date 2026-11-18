@@ -111,6 +111,10 @@ Please find a fully functioning sample application under [./samples/GiraffeDotLi
 
 ## Nightly builds and NuGet feed
 
+The library now depends on Giraffe `8.3.0` and targets .NET 6, the oldest
+framework supported by that package. The sample and test projects target
+.NET 8, avoiding the obsolete .NET 5 runtime and OpenSSL requirements on CI.
+
 All official release packages are published to the official and public NuGet feed.
 
 Nightly builds (builds from the `develop` branch) produce unofficial pre-release packages which can be pulled from the [project's NuGet feed on GitHub](https://github.com/orgs/giraffe-fsharp/packages).

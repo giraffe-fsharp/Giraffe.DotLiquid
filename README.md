@@ -111,6 +111,27 @@ Please find a fully functioning sample application under [./samples/GiraffeDotLi
 
 ## Nightly builds and NuGet feed
 
+### NuGet trusted publishing
+
+GitHub releases publish through [build.yml](.github/workflows/build.yml) using
+GitHub OIDC and `NuGet/login` as the personal NuGet account `dsyme`, with package
+permissions provided by the `fsprojects` NuGet organization.
+
+Before publishing, configure a [NuGet trusted publishing policy](https://www.nuget.org/account/trustedpublishing)
+with package owner `fsprojects`, GitHub repository owner `giraffe-fsharp`,
+repository `Giraffe.DotLiquid`, workflow filename `build.yml`, no environment,
+and scope to push new versions of the existing package `Giraffe.DotLiquid`.
+Keep `dsyme` an active member of the NuGet organization.
+
+After a successful trusted-publishing release, remove the obsolete GitHub
+`NUGET_KEY` secret and revoke its NuGet API key if it is not used elsewhere.
+
+### Package feeds
+
+The test projects run on .NET 8 so they do not depend on the .NET 5 runtime's
+obsolete OpenSSL libraries on current CI runners. The published library and
+sample application's target frameworks are unchanged.
+
 All official release packages are published to the official and public NuGet feed.
 
 Nightly builds (builds from the `develop` branch) produce unofficial pre-release packages which can be pulled from the [project's NuGet feed on GitHub](https://github.com/orgs/giraffe-fsharp/packages).
